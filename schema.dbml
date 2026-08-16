@@ -1,0 +1,72 @@
+Table Gare {
+  code_gare varchar [primary key]
+  nom_gare varchar
+  zone_id varchar
+  region_administrative varchar
+  zone_scolaire varchar
+}
+
+Table Ligne {
+  route_id varchar [primary key]
+  nom_ligne varchar
+  type_train varchar
+}
+
+Table Trip {
+  trip_id varchar [primary key]
+  route_id varchar
+  service_id varchar
+}
+
+Table Stop_times {
+  trip_id varchar
+  code_gare varchar
+  heure_passage varchar
+}
+
+Table Frequentation {
+  code_gare varchar
+  annee int
+  total_voyageurs int
+}
+
+Table Zone_geographique {
+  direction_regionale varchar [primary key]
+  latitude_centre float
+  longitude_centre float
+}
+
+Table Meteo {
+  direction_regionale varchar
+  date date
+  temperature float
+  precipitation float
+  vent float
+}
+
+Table Regularite {
+  region_administrative varchar
+  mois varchar
+  nb_trains_programmes int
+  nb_trains_circules int
+  nb_trains_annules int
+  nb_trains_retard int
+  taux_regularite float
+}
+
+Table Calendrier_reference {
+  date date [primary key]
+  est_ferie boolean
+  vacances_zone_a boolean
+  vacances_zone_b boolean
+  vacances_zone_c boolean
+}
+
+Ref: Gare.zone_id > Zone_geographique.direction_regionale
+Ref: Meteo.direction_regionale > Zone_geographique.direction_regionale
+Ref: Regularite.region_administrative > Gare.region_administrative
+Ref: Frequentation.code_gare > Gare.code_gare
+Ref: Stop_times.code_gare > Gare.code_gare
+Ref: Stop_times.trip_id > Trip.trip_id
+Ref: Trip.route_id > Ligne.route_id
+Ref: Meteo.date > Calendrier_reference.date
