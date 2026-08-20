@@ -49,6 +49,13 @@ services:
       postgres_airflow:
         condition: service_healthy
 
+  ingestion:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - ./raw:/app/raw
+
 volumes:
   airflow_postgres_data:
   warehouse_postgres_data:
