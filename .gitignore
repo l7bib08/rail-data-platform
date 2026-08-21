@@ -56,9 +56,7 @@ postgres_data/
 
 # Data
 
-data/raw/*
-!data/raw/.gitkeep
-!data/raw/sample.csv
-
-data/processed/*
-!data/processed/.gitkeep
+raw/*
+!raw/.gitkeep
+processed/*
+!processed/.gitkeep
