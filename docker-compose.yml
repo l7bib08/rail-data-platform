@@ -55,6 +55,7 @@ services:
       - .env
     volumes:
       - ./raw:/app/raw
+      - .:/app
 
 volumes:
   airflow_postgres_data:

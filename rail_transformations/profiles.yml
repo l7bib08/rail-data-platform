@@ -1,0 +1,12 @@
+rail_transformations:
+  outputs:
+    dev:
+      dbname: rail_db
+      host: postgres_warehouse
+      pass: '12349876'
+      port: 5432
+      schema: public
+      threads: 1
+      type: postgres
+      user: l7bib_warehouse
+  target: dev
